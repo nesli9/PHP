@@ -4,8 +4,8 @@
     $sayi2 = 20;
 
     /*
-    $1sayi ==> yanlış tanımlama
-    değişkenler sayısal karakterler ile başlayamaz
+        $1sayi ==> yanlış tanımlama
+        değişkenler sayısal karakterler ile başlayamaz
     */
     
     $sayi_3 = 30;
