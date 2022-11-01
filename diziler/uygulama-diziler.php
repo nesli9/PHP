@@ -58,7 +58,7 @@
         ),
     );
 
-    print_r($players["ronaldo"]["name"]);
+    print_r($players["ronaldo"]["name"]); //print_r --> ile dizi elemanlarını olduğu gibi yazdırabiliriz.
     echo "<br>";
     print_r($players["messi"]["history"]);
     echo "<br>";
