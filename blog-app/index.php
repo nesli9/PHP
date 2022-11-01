@@ -1,38 +1,60 @@
 <?php
 
-    $kategori1="Macera";
-    $kategori2="Dram";
-    $kategori3="Komedi";
-    $kategori4="Korku";
+    // $kategori1="Macera";
+    // $kategori2="Dram";
+    // $kategori3="Komedi";
+    // $kategori4="Korku";
 
-    $film1_baslik="Paper Lives";
-    $film1_aciklama="Kağıt toplayarak geçinen ve sağlığı giderek kötüleşen Mehmet terk edilmiş bir çocuk bulur. Birden hayatına giren küçük Ali, onu kendi çocukluğuyla yüzleştirecektir. (18 yaş ve üzeri için uygundur)";
-    $film1_resim="1.jpeg";
-    $film1_yorumSayisi="0";
-    $film1_begeniSayisi="106";
-    $film1_vizyon="evet";
+    $kategoriler = array("Macera", "Dram", "Komedi", "Korku");
 
-    $film2_baslik="Walking Dead";
-    $film2_aciklama="Zombi kıyametinin ardından hayatta kalanlar, birlikte verdikleri ölüm kalım mücadelesinde insanlığa karşı duydukları umuda tutunur.";
-    $film2_resim="2.jpeg";
-    $film2_yorumSayisi="236";
-    $film2_begeniSayisi="2023";
-    $film2_vizyon="hayır";
+    $filmler = array(
+        "1" => array(
+            "baslik" => "Paper Lives",
+            "aciklama" => "Kağıt toplayarak geçinen ve sağlığı giderek kötüleşen Mehmet terk edilmiş bir çocuk bulur. Birden hayatına giren küçük Ali, onu kendi çocukluğuyla yüzleştirecektir. (18 yaş ve üzeri için uygundur)",
+            "resim" => "1.jpeg",
+            "yorumSayisi" => "0",
+            "begeniSayisi"=> "106",
+            "vizyon" => "evet",
+        ),
+        "2" => array(
+            "baslik" => "Walking Dead",
+            "aciklama" => "Zombi kıyametinin ardından hayatta kalanlar, birlikte verdikleri ölüm kalım mücadelesinde insanlığa karşı duydukları umuda tutunur.",
+            "resim" => "2.jpeg",
+            "yorumSayisi" => "236",
+            "begeniSayisi"=> "2023",
+            "vizyon" => "hayır",
+        ),
+    
+    );
 
-    $film1_aciklama = strtolower($film1_aciklama);
-    $film1_aciklama = ucfirst($film1_aciklama);
+    // $film1_baslik="Paper Lives";
+    // $film1_aciklama="Kağıt toplayarak geçinen ve sağlığı giderek kötüleşen Mehmet terk edilmiş bir çocuk bulur. Birden hayatına giren küçük Ali, onu kendi çocukluğuyla yüzleştirecektir. (18 yaş ve üzeri için uygundur)";
+    // $film1_resim="1.jpeg";
+    // $film1_yorumSayisi="0";
+    // $film1_begeniSayisi="106";
+    // $film1_vizyon="evet";
 
-    $film2_aciklama = strtolower($film2_aciklama);
-    $film2_aciklama = ucfirst($film2_aciklama);
+    // $film2_baslik="Walking Dead";
+    // $film2_aciklama="Zombi kıyametinin ardından hayatta kalanlar, birlikte verdikleri ölüm kalım mücadelesinde insanlığa karşı duydukları umuda tutunur.";
+    // $film2_resim="2.jpeg";
+    // $film2_yorumSayisi="236";
+    // $film2_begeniSayisi="2023";
+    // $film2_vizyon="hayır";
 
-    $film1_aciklama = substr($film1_aciklama,0,200)."...";
-    $film2_aciklama = substr($film2_aciklama,0,200)."...";
+    $filmler["1"]["aciklama"] = strtolower($filmler["1"]["aciklama"]);
+    $filmler["1"]["aciklama"] = ucfirst($filmler["1"]["aciklama"]);
 
-    $film1_url = strtolower($film1_baslik);
-    $film1_url = str_replace([" ","ç"],["-","c"],$film1_url);
+    $filmler["2"]["aciklama"] = strtolower($filmler["2"]["aciklama"]);
+    $filmler["2"]["aciklama"] = ucfirst($filmler["2"]["aciklama"]);
 
-    $film2_url = strtolower($film2_baslik);
-    $film2_url = str_replace([" ","ç"],["-","c"],$film2_url);
+    $filmler["1"]["aciklama"]= substr($filmler["1"]["aciklama"],0,200)."...";
+    $filmler["2"]["aciklama"] = substr($filmler["2"]["aciklama"],0,200)."...";
+
+    $filmler["1"]["url"] = strtolower($filmler["1"]["baslik"]);
+    $filmler["1"]["url"] = str_replace([" ","ç"],["-","c"],$filmler["1"]["url"]);
+
+    $filmler["2"]["url"] = strtolower($filmler["2"]["baslik"]);
+    $filmler["2"]["url"] = str_replace([" ","ç"],["-","c"],$filmler["2"]["url"]);
 
     const baslik = "Popüler Filmler";
 
@@ -62,10 +84,10 @@
 
             <div class="col-3">
                 <ul class="list-group">
-                    <li class="list-group-item"><?php echo $kategori1 ?></li>
-                    <li class="list-group-item"><?php echo $kategori2 ?></li>
-                    <li class="list-group-item"><?php echo $kategori3 ?></li>
-                    <li class="list-group-item"><?php echo $kategori4 ?></li>
+                    <li class="list-group-item"><?php echo $kategoriler[0] ?></li>
+                    <li class="list-group-item"><?php echo $kategoriler[1]  ?></li>
+                    <li class="list-group-item"><?php echo $kategoriler[2]  ?></li>
+                    <li class="list-group-item"><?php echo $kategoriler[3]  ?></li>
                 </ul>
             </div>
             <div class="col-9">
@@ -73,18 +95,18 @@
                 <div class="card mb-3">
                     <div class="row">
                         <div class="col-3">
-                            <?php echo  "<img class=\"img-fluid\" src=\"img/{$film1_resim}\">"  ?>                           
+                            <?php echo  "<img class=\"img-fluid\" src=\"img/{$filmler["1"]["resim"]}\">"  ?>                           
                         </div>
                         <div class="col-9">
                             <div class="card-body">                        
-                                <h5 class="card-title"><?php echo "<a href=\"{$film1_url}\">{$film1_baslik}</a>" ?></h5>
+                                <h5 class="card-title"><?php echo "<a href=\"{$filmler["1"]["url"]}\">{$filmler["1"]["baslik"]}</a>" ?></h5>
                                 <p class="card-text">
-                                    <?php echo $film1_aciklama ?>
+                                    <?php echo $filmler["1"]["aciklama"] ?>
                                 </p>
                                 <div>
-                                    <span class="badge bg-primary"><?php echo $film1_yorumSayisi ?> yorum</span>
-                                    <span class="badge bg-primary"><?php echo $film1_begeniSayisi ?> beğeni</span>
-                                    <span class="badge bg-warning">vizyonda: <?php echo $film1_vizyon ?></span>
+                                    <span class="badge bg-primary"><?php echo $filmler["1"]["yorumSayisi"] ?> yorum</span>
+                                    <span class="badge bg-primary"><?php echo $filmler["1"]["begeniSayisi"] ?> beğeni</span>
+                                    <span class="badge bg-warning">vizyonda: <?php echo $filmler["1"]["vizyon"] ?></span>
                                 </div>
                             </div>
                         
@@ -95,18 +117,18 @@
                 <div class="card mb-3">
                     <div class="row">
                         <div class="col-3">
-                            <?php echo  "<img class=\"img-fluid\" src=\"img/{$film2_resim}\">"  ?>                           
+                            <?php echo  "<img class=\"img-fluid\" src=\"img/{$filmler["2"]["resim"]}\">"  ?>                           
                         </div>
                         <div class="col-9">
                             <div class="card-body">                        
-                                <h5 class="card-title"><?php echo "<a href=\"{$film2_url}\">{$film2_baslik}</a>" ?></h5>
+                                <h5 class="card-title"><?php echo "<a href=\"{$filmler["2"]["url"]}\">{$filmler["2"]["baslik"]}</a>" ?></h5>
                                 <p class="card-text">
-                                    <?php echo $film2_aciklama ?>
+                                    <?php echo $filmler["2"]["aciklama"] ?>
                                 </p>
                                 <div>
-                                    <span class="badge bg-primary"><?php echo $film2_yorumSayisi ?> yorum</span>
-                                    <span class="badge bg-primary"><?php echo $film2_begeniSayisi ?> beğeni</span>
-                                    <span class="badge bg-warning">vizyonda: <?php echo $film2_vizyon ?></span>
+                                    <span class="badge bg-primary"><?php echo $filmler["2"]["yorumSayisi"] ?> yorum</span>
+                                    <span class="badge bg-primary"><?php echo $filmler["2"]["begeniSayisi"] ?> beğeni</span>
+                                    <span class="badge bg-warning">vizyonda: <?php echo $filmler["2"]["vizyon"] ?></span>
                                 </div>
                             </div>
                         
