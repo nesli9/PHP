@@ -7,6 +7,9 @@
 
     $kategoriler = array("Macera", "Dram", "Komedi", "Korku");
 
+    array_push($kategoriler , "Bilim Kurgu");
+    sort($kategoriler);
+
     $filmler = array(
         "1" => array(
             "baslik" => "Paper Lives",
@@ -26,6 +29,21 @@
         ),
     
     );
+
+    $yeni_film = array(
+            "baslik" => "Yeni Film",
+            "aciklama" => "Zombi kıyametinin ardından hayatta kalanlar, birlikte verdikleri ölüm kalım mücadelesinde insanlığa karşı duydukları umuda tutunur.",
+            "resim" => "2.jpeg",
+            "yorumSayisi" => "236",
+            "begeniSayisi"=> "2023",
+            "vizyon" => "hayır",
+    );
+
+    $filmler["0"] = $yeni_film;
+    ksort($filmler);
+    //print_r($filmler);
+    shuffle($filmler);
+
 
     // $film1_baslik="Paper Lives";
     // $film1_aciklama="Kağıt toplayarak geçinen ve sağlığı giderek kötüleşen Mehmet terk edilmiş bir çocuk bulur. Birden hayatına giren küçük Ali, onu kendi çocukluğuyla yüzleştirecektir. (18 yaş ve üzeri için uygundur)";
@@ -50,6 +68,9 @@
     $filmler["1"]["aciklama"]= substr($filmler["1"]["aciklama"],0,200)."...";
     $filmler["2"]["aciklama"] = substr($filmler["2"]["aciklama"],0,200)."...";
 
+    $filmler["0"]["url"] = strtolower($filmler["0"]["baslik"]);
+    $filmler["0"]["url"] = str_replace([" ","ç"],["-","c"],$filmler["0"]["url"]);
+
     $filmler["1"]["url"] = strtolower($filmler["1"]["baslik"]);
     $filmler["1"]["url"] = str_replace([" ","ç"],["-","c"],$filmler["1"]["url"]);
 
@@ -57,6 +78,9 @@
     $filmler["2"]["url"] = str_replace([" ","ç"],["-","c"],$filmler["2"]["url"]);
 
     const baslik = "Popüler Filmler";
+    $kategoriSayisi= count($kategoriler);
+    $filmSayisi = count($filmler);
+    $ozet = "$kategoriSayisi Kategoride $filmSayisi film listelenmiştir";
 
     /*
         1- Film açıklamasındaki baş harf hariç tüm harfleri küçük harfe çeviriniz.
@@ -88,10 +112,37 @@
                     <li class="list-group-item"><?php echo $kategoriler[1]  ?></li>
                     <li class="list-group-item"><?php echo $kategoriler[2]  ?></li>
                     <li class="list-group-item"><?php echo $kategoriler[3]  ?></li>
+                    <li class="list-group-item"><?php echo $kategoriler[4]  ?></li>
                 </ul>
             </div>
             <div class="col-9">
                 <h1 class="mb-4"><?php echo baslik?></h1>
+                <p class="text-muted">
+                <?php echo $ozet?>
+                </p>
+
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-3">
+                            <?php echo  "<img class=\"img-fluid\" src=\"img/{$filmler["0"]["resim"]}\">"  ?>                           
+                        </div>
+                        <div class="col-9">
+                            <div class="card-body">                        
+                                <h5 class="card-title"><?php echo "<a href=\"{$filmler["0"]["url"]}\">{$filmler["0"]["baslik"]}</a>" ?></h5>
+                                <p class="card-text">
+                                    <?php echo $filmler["0"]["aciklama"] ?>
+                                </p>
+                                <div>
+                                    <span class="badge bg-primary"><?php echo $filmler["0"]["yorumSayisi"] ?> yorum</span>
+                                    <span class="badge bg-primary"><?php echo $filmler["0"]["begeniSayisi"] ?> beğeni</span>
+                                    <span class="badge bg-warning">vizyonda: <?php echo $filmler["0"]["vizyon"] ?></span>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card mb-3">
                     <div class="row">
                         <div class="col-3">

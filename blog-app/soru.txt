@@ -23,4 +23,21 @@
             yorum sayısı: 236
             beğeni sayısı: 1023
             vizyonda olma durumu: hayır
+
+
     */
+
+
+
+/*  25.video
+
+
+    1- kategoriler dizisinin sonuna "Bilim Kurgu" kategorisini ekleyiniz.
+    2- kategorileri alfabetik olarak sıralayınız.
+    3- filmler dizisinin başına bir film ekleyiniz.
+    4- filmleri rastgele sıralayınız.
+    5- h1 etiketinin altına "5 kategoride 3 film listelenmiştir" yazısını dizi eleman sayılarına göre yazdırınız.
+    
+
+
+*/
